@@ -2,6 +2,8 @@ from brownie import PeemoTester, PeemoTestRewardManager
 import scripts.functions as func
 from web3 import Web3
 
+player_id = 1
+
 def deploy_peem():
     if(len(PeemoTester) <= 0):
         initial_supply = Web3.toWei(10000000000, 'ether')
@@ -47,7 +49,8 @@ def withdraw_staked_peem():
     pass
 
 def get_staked_peem():
-    pass
+    contract = deploy_staking_contract()
+    staked_peem = contract.getPlayerStake(player_id)
 
 def main():
     stake_peem()
